@@ -19,6 +19,20 @@ import {
 } from "@chakra-ui/react";
 import Layout from "../../components/layout";
 
+export const query = graphql`
+  query GamesQuery {
+    allMongodbGameHubDbGames {
+      edges {
+        node {
+          id
+          name
+          description
+        }
+      }
+    }
+  }
+`;
+
 const GamesPage = ({ data }: PageProps<any>) => {
   type Game = {
     id: number;
@@ -27,9 +41,9 @@ const GamesPage = ({ data }: PageProps<any>) => {
     stage: "beta" | "comming soon" | "released";
   };
 
-  const games: Game[] = data.allMongodbGameHubDbGames.edges.map(
-    (b: any) => b.node
-  ) as Game[];
+  const games: Game[] =
+    (data?.allMongodbGameHubDbGames.edges.map((b: any) => b.node) as Game[]) ||
+    [];
 
   // const games = [
   //   {
@@ -85,17 +99,17 @@ const GamesPage = ({ data }: PageProps<any>) => {
                   {game.name}
                 </Heading>
                 {game.description && <Text>{game.description}</Text>}
-                {/* <Text>
+                <Text>
                   <Badge
                     colorScheme={game.stage === "released" ? "purple" : "gray"}
                   >
                     {game.stage === "released" ? "New" : game.stage}!
                   </Badge>
-                </Text> */}
+                </Text>
               </Stack>
             </CardBody>
             <Divider />
-            {/* <CardFooter>
+            <CardFooter>
               <ButtonGroup spacing="2">
                 <Button
                   isDisabled={game.stage === "comming soon"}
@@ -108,7 +122,7 @@ const GamesPage = ({ data }: PageProps<any>) => {
                   Play
                 </Button>
               </ButtonGroup>
-            </CardFooter> */}
+            </CardFooter>
           </Card>
         ))}
       </Grid>
