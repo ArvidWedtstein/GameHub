@@ -19,55 +19,56 @@ import {
 } from "@chakra-ui/react";
 import Layout from "../../components/layout";
 
-const GamesPage = ({}: PageProps) => {
+const GamesPage = ({ data }: PageProps<any>) => {
   type Game = {
     id: number;
     name: string;
     description: string;
     stage: "beta" | "comming soon" | "released";
   };
-  // const games: Game[] = JSON.parse(
-  //   data.allFile.nodes[0].internal.content || ""
-  // );
 
-  const games = [
-    {
-      id: 1,
-      name: "Tetris",
-      description: "",
-      stage: "beta",
-    },
-    {
-      id: 2,
-      name: "2048",
-      description: "",
-      stage: "released",
-    },
-    {
-      id: 3,
-      name: "Snake",
-      description: "",
-      stage: "beta",
-    },
-    {
-      id: 4,
-      name: "Chess",
-      description: "",
-      stage: "beta",
-    },
-    {
-      id: 5,
-      name: "Pacman",
-      description: "",
-      stage: "comming soon",
-    },
-    {
-      id: 6,
-      name: "Match",
-      description: "Match Card.",
-      stage: "beta",
-    },
-  ];
+  const games: Game[] = data.allMongodbGameHubDbGames.edges.map(
+    (b: any) => b.node
+  ) as Game[];
+
+  // const games = [
+  //   {
+  //     id: 1,
+  //     name: "Tetris",
+  //     description: "",
+  //     stage: "beta",
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "2048",
+  //     description: "",
+  //     stage: "released",
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "Snake",
+  //     description: "",
+  //     stage: "beta",
+  //   },
+  //   {
+  //     id: 4,
+  //     name: "Chess",
+  //     description: "",
+  //     stage: "beta",
+  //   },
+  //   {
+  //     id: 5,
+  //     name: "Pacman",
+  //     description: "",
+  //     stage: "comming soon",
+  //   },
+  //   {
+  //     id: 6,
+  //     name: "Match",
+  //     description: "Match Card.",
+  //     stage: "beta",
+  //   },
+  // ];
   return (
     <Layout>
       <Grid templateColumns="repeat(5, 1fr)" gap={6}>
@@ -84,17 +85,17 @@ const GamesPage = ({}: PageProps) => {
                   {game.name}
                 </Heading>
                 {game.description && <Text>{game.description}</Text>}
-                <Text>
+                {/* <Text>
                   <Badge
                     colorScheme={game.stage === "released" ? "purple" : "gray"}
                   >
                     {game.stage === "released" ? "New" : game.stage}!
                   </Badge>
-                </Text>
+                </Text> */}
               </Stack>
             </CardBody>
             <Divider />
-            <CardFooter>
+            {/* <CardFooter>
               <ButtonGroup spacing="2">
                 <Button
                   isDisabled={game.stage === "comming soon"}
@@ -107,34 +108,12 @@ const GamesPage = ({}: PageProps) => {
                   Play
                 </Button>
               </ButtonGroup>
-            </CardFooter>
+            </CardFooter> */}
           </Card>
         ))}
       </Grid>
     </Layout>
   );
 };
-
-// export const query = graphql`
-//   query GamesQuery {
-//     allFile(filter: { ext: { eq: ".json" } }) {
-//       nodes {
-//         sourceInstanceName
-//         id
-//         relativePath
-//         ext
-//         prettySize
-//         birthTime
-//         internal {
-//           content
-//           description
-//           ignoreType
-//           mediaType
-//           contentFilePath
-//         }
-//       }
-//     }
-//   }
-// `;
 
 export default GamesPage;
