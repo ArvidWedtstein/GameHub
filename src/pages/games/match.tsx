@@ -16,45 +16,6 @@ import {
 } from "@chakra-ui/react";
 
 const MatchCardsPage = () => {
-  const data = [
-    {
-      id: 1,
-      name: "Tetris",
-      description: "",
-      stage: "beta",
-    },
-    {
-      id: 2,
-      name: "2048",
-      description: "",
-      stage: "released",
-    },
-    {
-      id: 3,
-      name: "Snake",
-      description: "",
-      stage: "beta",
-    },
-    {
-      id: 4,
-      name: "Chess",
-      description: "",
-      stage: "beta",
-    },
-    {
-      id: 5,
-      name: "Pacman",
-      description: "",
-      stage: "comming soon",
-    },
-    {
-      id: 6,
-      name: "Match",
-      description: "Match Card.",
-      stage: "beta",
-    },
-  ];
-
   type CardWithoutEvent = { id: number; value: string; isFlipped: boolean };
   const [cards, setCards] = React.useState<CardWithoutEvent[]>([]);
   const [flippedCards, setFlippedCards] = React.useState<CardWithoutEvent[]>(
