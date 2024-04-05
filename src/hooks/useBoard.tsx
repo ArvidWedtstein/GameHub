@@ -12,6 +12,7 @@ export type Board = {
     columns: number;
   };
   rows: {
+    value?: string;
     occupied: boolean;
     className: string;
   }[][];
