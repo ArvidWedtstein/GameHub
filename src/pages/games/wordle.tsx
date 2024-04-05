@@ -33,7 +33,7 @@ const WordlePage = () => {
     buildBoard({ rows: 5, columns: 5 })
   );
 
-  const [currentLine, setCurrentLine] = React.useState(0);
+  const [currentPosition, setCurrentPosition] = React.useState({ x: 0, y: 0 });
   const [guess, setGuess] = React.useState("");
   const [targetWord, setTargetWord] = React.useState("HELLO");
 
@@ -45,15 +45,19 @@ const WordlePage = () => {
     };
   }, []);
 
-  const handleKeyDown = (e: KeyboardEvent) => {
+  const handleKeyDown = async (e: KeyboardEvent) => {
     if (e.key === "Enter") {
       // Fix tomorrow
-      board.rows[currentLine][0].value = guess.split("")[0];
-      board.rows[currentLine][1].value = guess.split("")[1];
-      board.rows[currentLine][2].value = guess.split("")[2];
-      board.rows[currentLine][3].value = guess.split("")[3];
-      board.rows[currentLine][4].value = guess.split("")[4];
-      setCurrentLine((prev) => (prev === 4 ? 0 : prev + 1));
+      board.rows[currentPosition.y][0].value = await guess.split("")[0];
+      board.rows[currentPosition.y][1].value = await guess.split("")[1];
+      board.rows[currentPosition.y][2].value = await guess.split("")[2];
+      board.rows[currentPosition.y][3].value = await guess.split("")[3];
+      board.rows[currentPosition.y][4].value = await guess.split("")[4];
+      setCurrentPosition((prev) => ({
+        x: 0,
+        y: prev.y === 4 ? 0 : prev.y + 1,
+        value: null,
+      }));
       setGuess("");
     } else if (e.key === "Backspace") {
       setGuess((prev) => prev.substring(0, prev.length - 1));
@@ -79,26 +83,39 @@ const WordlePage = () => {
     cell: { className: string };
   }) => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      board.rows[cell.y][cell.x].className = "tetromino__s";
+      // setBoard((prevBoard) => prevBoard.rows.map((row, y) => {
+      //   if (y === cell.y) {
+      //     row.map((cell, x) => {
+      //       cell.className = 'tetrominos__s'
+      //       return cell;
+      //     })
+      //     return row;
+      //   }
+      //   return row;
+      // }))
       const nextEl = findNextTabStop(e.target);
+      setCurrentPosition((prev) => ({
+        x: prev.x === 4 ? 4 : prev.x + 1,
+        y: prev.y,
+      }));
       nextEl.focus();
-
-      board.rows[cell.y][cell.x].value = guess[cell.x];
     };
 
     return (
       <Cell cell={cell.cell}>
         <Input
           textTransform={"uppercase"}
-          disabled={cell.y !== currentLine}
+          disabled={
+            cell.y !== currentPosition.y && cell.x !== currentPosition.x
+          }
           height="100%"
           fontSize={"3rem"}
           maxLength={1}
           border={"none"}
           width="100%"
           onChange={handleChange}
-          value={
-            currentLine === cell.y
+          defaultValue={
+            currentPosition.y === cell.y
               ? guess[cell.x]
               : board.rows[cell.y][cell.x].value
           }
