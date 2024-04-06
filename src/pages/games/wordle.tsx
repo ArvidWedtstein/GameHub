@@ -83,16 +83,19 @@ const WordlePage = () => {
     cell: { className: string };
   }) => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      // setBoard((prevBoard) => prevBoard.rows.map((row, y) => {
-      //   if (y === cell.y) {
-      //     row.map((cell, x) => {
-      //       cell.className = 'tetrominos__s'
-      //       return cell;
-      //     })
-      //     return row;
-      //   }
-      //   return row;
-      // }))
+      setBoard((prevBoard) => ({
+        ...prevBoard,
+        rows: prevBoard.rows.map((row, y) => {
+          if (y === cell.y) {
+            row.map((cell, x) => {
+              cell.className = "tetrominos__s";
+              return cell;
+            });
+            return row;
+          }
+          return row;
+        }),
+      }));
       const nextEl = findNextTabStop(e.target);
       setCurrentPosition((prev) => ({
         x: prev.x === 4 ? 4 : prev.x + 1,

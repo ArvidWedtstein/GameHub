@@ -23,6 +23,7 @@ const ChessPage: React.FC<PageProps> = () => {
   );
 
   // https://codepen.io/jak_e/pen/JjRGQPY
+
   return (
     <Layout>
       <Container maxW="container.xl">
