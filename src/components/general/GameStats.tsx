@@ -25,7 +25,13 @@ interface GameStatsComponent {
 const GameStats = ({
   children,
   listProps = {
-    style: { position: "absolute", width: "22vw", right: 0, top: "6em" },
+    style: {
+      position: "absolute",
+      minWidth: "10rem",
+      width: "18rem",
+      right: 0,
+      top: "6em",
+    },
   },
   gameStats,
 }: GameStatsComponent) => {

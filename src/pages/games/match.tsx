@@ -2,7 +2,7 @@ import { graphql, HeadFC, useStaticQuery } from "gatsby";
 import * as React from "react";
 import Card from "../../components/cards/Card";
 import Layout from "../../components/layout";
-import GameStats from "../../components/tetris/GameStats";
+import GameStats from "../../components/general/GameStats";
 import {
   Box,
   Button,
@@ -241,7 +241,7 @@ const MatchCardsPage = () => {
           ]}
         >
           <ListItem>
-            <Button variant="outline" colorScheme="blue" onClick={resetGame}>
+            <Button variant="outline" colorScheme="red" onClick={resetGame}>
               Reset
             </Button>
           </ListItem>

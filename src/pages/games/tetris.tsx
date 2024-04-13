@@ -8,7 +8,7 @@ import { type Board as BoardType, useBoard } from "../../hooks/useBoard";
 import Board from "../../components/tetris/Board";
 import { useGameStats } from "../../hooks/useGameStats";
 import { usePlayer } from "../../hooks/usePlayer";
-import GameStats from "../../components/tetris/GameStats";
+import GameStats from "../../components/general/GameStats";
 import Previews from "../../components/tetris/Previews";
 import GameController from "../../components/tetris/GameController";
 import { useGameOver } from "../../hooks/useGameOver";
