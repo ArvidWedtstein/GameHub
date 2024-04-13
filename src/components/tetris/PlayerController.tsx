@@ -4,14 +4,18 @@ import { Action } from "./Input";
 import { Board } from "../../hooks/useBoard";
 import { type Player } from "../../hooks/usePlayer";
 
-const attemptRotation = ({ board, player, setPlayer }: {
-  board: Board,
-  player: Player,
-  setPlayer: (player: Player) => void,
+const attemptRotation = ({
+  board,
+  player,
+  setPlayer,
+}: {
+  board: Board;
+  player: Player;
+  setPlayer: (player: Player) => void;
 }) => {
   const shape = rotate({
     piece: player.tetromino.shape,
-    direction: 1
+    direction: 1,
   });
 
   const position = player.position;
@@ -24,35 +28,40 @@ const attemptRotation = ({ board, player, setPlayer }: {
       ...player,
       tetromino: {
         ...player.tetromino,
-        shape
-      }
+        shape,
+      },
     });
   } else {
     return false;
   }
 };
 
-export const movePlayer = ({ delta, position, shape, board }: {
-  delta: Player["position"],
-  position: Player["position"],
-  shape: Tetromino["shape"],
-  board: Board,
+export const movePlayer = ({
+  delta,
+  position,
+  shape,
+  board,
+}: {
+  delta: Player["position"];
+  position: Player["position"];
+  shape: Tetromino["shape"];
+  board: Board;
 }) => {
   const desiredNextPosition = {
     row: position.row + delta.row,
-    column: position.column + delta.column
+    column: position.column + delta.column,
   };
 
   const collided = hasCollision({
     board,
     position: desiredNextPosition,
-    shape
+    shape,
   });
 
   const isOnBoard = isWithinBoard({
     board,
     position: desiredNextPosition,
-    shape
+    shape,
   });
 
   const preventMove = !isOnBoard || (isOnBoard && collided);
@@ -65,12 +74,18 @@ export const movePlayer = ({ delta, position, shape, board }: {
 };
 
 // TODO: fix type
-const attemptMovement = ({ board, action, player, setPlayer, setGameOver }: {
-  action: any,
-  board: Board,
-  player: Player,
-  setPlayer: (player: Player) => void,
-  setGameOver: (gameover: Boolean) => void
+const attemptMovement = ({
+  board,
+  action,
+  player,
+  setPlayer,
+  setGameOver,
+}: {
+  action: any;
+  board: Board;
+  player: Player;
+  setPlayer: (player: Player) => void;
+  setGameOver: (gameover: boolean) => void;
 }) => {
   const delta = { row: 0, column: 0 };
   let isFastDropping = false;
@@ -89,7 +104,7 @@ const attemptMovement = ({ board, action, player, setPlayer, setGameOver }: {
     delta,
     position: player.position,
     shape: player.tetromino.shape,
-    board
+    board,
   });
 
   // Did we collide immediately? If so, game over, man!
@@ -102,7 +117,7 @@ const attemptMovement = ({ board, action, player, setPlayer, setGameOver }: {
     ...player,
     collided,
     isFastDropping,
-    position: nextPosition
+    position: nextPosition,
   });
 };
 
@@ -112,13 +127,13 @@ export const playerController = ({
   board,
   player,
   setPlayer,
-  setGameOver
+  setGameOver,
 }: {
-  action: any,
-  board: Board,
-  player: Player,
-  setPlayer: (player: Player) => void,
-  setGameOver: (gameover: Boolean) => void
+  action: any;
+  board: Board;
+  player: Player;
+  setPlayer: (player: Player) => void;
+  setGameOver: (gameover: boolean) => void;
 }) => {
   if (!action) return;
 

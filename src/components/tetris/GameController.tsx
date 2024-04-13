@@ -19,7 +19,7 @@ const GameController = ({
   board: Board;
   gameStats: GameStats;
   player: Player;
-  setGameOver: (gameover: Boolean) => void;
+  setGameOver: (gameover: boolean) => void;
   setPlayer: (player: Player) => void;
 }) => {
   const [dropTime, pauseDropTime, resumeDropTime] = useDropTime({

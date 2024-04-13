@@ -11,32 +11,20 @@ import {
   Divider,
   Grid,
   GridItem,
-  List,
   ListItem,
-  Stat,
-  StatLabel,
-  StatNumber,
-  Editable,
-  EditableInput,
-  EditableTextarea,
-  PinInput,
-  HStack,
   Input,
-  Kbd,
   InputGroup,
   InputRightElement,
   FormControl,
   FormLabel,
   Flex,
   Text,
-  Alert,
-  AlertIcon,
-  AlertTitle,
-  AlertDescription,
 } from "@chakra-ui/react";
+import { useGameOver } from "../../hooks/useGameOver";
 
 const words = ["hangman", "javascript", "react", "gatsby", "coding"];
 const HangmanPage = () => {
+  const [gameOver, setGameOver, resetGameOver] = useGameOver();
   const [word, setWord] = React.useState("");
   const [wordInput, setWordInput] = React.useState("");
   const [guessedLetters, setGuessedLetters] = React.useState<string[]>([]);
@@ -57,8 +45,7 @@ const HangmanPage = () => {
     guessedLetters.includes(letter) ? letter : "_"
   );
 
-  const isGameOver = remainingAttempts === 0 || !maskedWord.includes("_");
-  const statusMessage = isGameOver
+  const statusMessage = gameOver
     ? maskedWord.includes("_")
       ? "Game Over. You Lost!"
       : maskedWord !== ""
@@ -73,6 +60,7 @@ const HangmanPage = () => {
       setShow(true);
       setWord("");
 
+      resetGameOver();
       setGuessedLetters([]);
       setRemainingAttempts(9);
     }
@@ -139,7 +127,7 @@ const HangmanPage = () => {
                     variant="solid"
                     key={letter}
                     onClick={() => handleGuess(letter)}
-                    isActive={isGameOver || guessedLetters.includes(letter)}
+                    isActive={guessedLetters.includes(letter) || gameOver}
                     disabled={guessedLetters.includes(letter)}
                   >
                     {letter}

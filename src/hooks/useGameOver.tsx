@@ -1,11 +1,11 @@
 import { useState, useCallback } from "react";
 
 export const useGameOver = (): [
-  Boolean,
-  React.Dispatch<React.SetStateAction<Boolean>>,
+  boolean,
+  React.Dispatch<React.SetStateAction<boolean>>,
   () => void
 ] => {
-  const [gameOver, setGameOver] = useState<Boolean>(true);
+  const [gameOver, setGameOver] = useState<boolean>(true);
 
   const resetGameOver = useCallback(() => {
     setGameOver(false);
