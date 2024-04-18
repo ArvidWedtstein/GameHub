@@ -28,7 +28,7 @@ import { Board as BoardType, buildBoard } from "../../hooks/useBoard";
 import Board from "../../components/tetris/Board";
 
 // TODO: finish
-const TicTacToePage = () => {
+const PongPage = () => {
   return (
     <Layout>
       <Container maxW="container.xl">
@@ -41,6 +41,6 @@ const TicTacToePage = () => {
   );
 };
 
-export default TicTacToePage;
+export default PongPage;
 
-export const Head: HeadFC = () => <title>Toc Tac Toe</title>;
+export const Head: HeadFC = () => <title>Pong</title>;

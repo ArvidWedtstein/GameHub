@@ -40,7 +40,7 @@ const GameStats = ({
       {children}
       {gameStats.map((gameStat, index) => {
         return (
-          <Fragment>
+          <Fragment key={index}>
             <ListItem>
               <Stat>
                 <StatLabel>{gameStat.name}</StatLabel>
