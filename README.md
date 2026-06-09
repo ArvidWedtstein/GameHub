@@ -159,18 +159,18 @@ Don't forget to give the project a star! <3
 
 <!-- MARKDOWN LINKS & IMAGES -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/ArvidWedtstein/Tetris.svg?style=for-the-badge
-[contributors-url]: https://github.com/ArvidWedtstein/Tetris/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/ArvidWedtstein/Tetris.svg?style=for-the-badge
-[forks-url]: https://github.com/ArvidWedtstein/Tetris/network/members
-[stars-shield]: https://img.shields.io/github/stars/ArvidWedtstein/Tetris.svg?style=for-the-badge
-[stars-url]: https://github.com/ArvidWedtstein/Tetris/stargazers
-[issues-shield]: https://img.shields.io/github/issues/ArvidWedtstein/Tetris.svg?style=for-the-badge
-[issues-url]: https://github.com/ArvidWedtstein/Tetris/issues
-[license-shield]: https://img.shields.io/github/license/ArvidWedtstein/Tetris.svg?style=for-the-badge
-[license-url]: https://github.com/ArvidWedtstein/Tetris/blob/prod/LICENSE.txt
-[version-shield]: https://img.shields.io/github/package-json/v/ArvidWedtstein/Tetris/dev?style=for-the-badge
-[version-url]: https://github.com/ArvidWedtstein/Tetris
+[contributors-shield]: https://img.shields.io/github/contributors/ArvidWedtstein/GameHub.svg?style=for-the-badge
+[contributors-url]: https://github.com/ArvidWedtstein/GameHub/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/ArvidWedtstein/GameHub.svg?style=for-the-badge
+[forks-url]: https://github.com/ArvidWedtstein/GameHub/network/members
+[stars-shield]: https://img.shields.io/github/stars/ArvidWedtstein/GameHub.svg?style=for-the-badge
+[stars-url]: https://github.com/ArvidWedtstein/GameHub/stargazers
+[issues-shield]: https://img.shields.io/github/issues/ArvidWedtstein/GameHub.svg?style=for-the-badge
+[issues-url]: https://github.com/ArvidWedtstein/GameHub/issues
+[license-shield]: https://img.shields.io/github/license/ArvidWedtstein/GameHub.svg?style=for-the-badge
+[license-url]: https://github.com/ArvidWedtstein/GameHub/blob/prod/LICENSE.txt
+[version-shield]: https://img.shields.io/github/package-json/v/ArvidWedtstein/GameHub/dev?style=for-the-badge
+[version-url]: https://github.com/ArvidWedtstein/GameHub
 [gatsby.js]: https://img.shields.io/badge/gatsby-454525?style=for-the-badge&logo=gatsbydotjs
 [gatsby-url]: https://emberjs.com/
 [chakra]: https://img.shields.io/badge/Chakra-454525?style=for-the-badge&logo=chakra
